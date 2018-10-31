@@ -16,15 +16,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var result: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        result.text = ""
         // Do any additional setup after loading the view, typically from a nib.
     }
     
     var re = 0//判断result.text前是否存在符号
-    var judge = 0
+    var judge = 0//决定输出数字的位数
     var add = 0
-    var number = 0
-    var minus = 0
-    var multiply = 0
+    var number = 0//判断加减乘除
+    //var minus = 0
+    //var multiply = 0
     var divide = 0
     @IBAction func number0(_ sender: Any) {
         if re == 1{
@@ -107,20 +108,23 @@ class ViewController: UIViewController {
         judge = 1
     }
     @IBAction func add(_ sender: Any) {
+        judge = 1
         if add == 1{
             let a = Double(result_1.text!)!
             let b = Double(result.text!)!
             let c = a + b
-            result!.text = String(c)
+            result_1.text = String(c)
             result.text = ""
             number = 2
             re = 1
-        }else{
-            if result.text == ""{
+        }
+        else{
+            if result.text == "" {
                 result.text = "0"
-            }else{
-                let x =
-                    Double(result.text!)!
+            }
+            else{
+                add = 1
+                let x = Double(result.text!)!
                 result_1.text = String(x)
                 result.text = ""
                 number = 2
@@ -129,35 +133,35 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func minus(_ sender: Any) {
-        if minus == 1{
+        if add == 1{
             let a = Double(result_1.text!)!
             let b = Double(result.text!)!
             let c = a - b
-            result!.text = String(c)
+            result_1.text = String(c)
             result.text = ""
-            number = 2
+            number = 1
             re = 1
         }else{
             if result.text == ""{
                 result.text = "0"
             }else{
                 let x =
-                    Double(result.text!)!
+            Double(result.text!)!
                 result_1.text = String(x)
                 result.text = ""
-                number = 2
+                number = 1
                 re = 0
             }
         }
     }
     @IBAction func multiply(_ sender: Any) {
-        if multiply == 1{
+        if add == 1{
             let a = Double(result_1.text!)!
             let b = Double(result.text!)!
             let c = a * b
-            result!.text = String(c)
+            result_1.text = String(c)
             result.text = ""
-            number = 2
+            number = 3
             re = 1
         }else{
             if result.text == ""{
@@ -167,20 +171,21 @@ class ViewController: UIViewController {
                     Double(result.text!)!
                 result_1.text = String(x)
                 result.text = ""
-                number = 2
+                number = 3
                 re = 0
+                add = 1
             }
         }
     }
     
     @IBAction func divide(_ sender: Any) {
-        if divide == 1{
+        if add == 1{
             let a = Double(result_1.text!)!
             let b = Double(result.text!)!
-            let c = a / (b)
-            result!.text = String(c)
+            let c = a/b
+            result_1.text = String(c)
             result.text = ""
-            number = 2
+            number = 4
             re = 1
         }else{
             if result.text == ""{
@@ -190,8 +195,9 @@ class ViewController: UIViewController {
                     Double(result.text!)!
                 result_1.text = String(x)
                 result.text = ""
-                number = 2
+                number = 4
                 re = 0
+                add = 1
             }
         }
     }
@@ -224,6 +230,7 @@ class ViewController: UIViewController {
     }
     @IBAction func clear(_ sender: Any) {
         result.text = ""
+        re = 0
     }
     
     @IBAction func change(_ sender: Any) {
