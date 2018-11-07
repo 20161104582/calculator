@@ -173,6 +173,7 @@ class ViewController: UIViewController {
         z = 0
         if add == 1
         {
+            judge = 0
             let a = Double(result_1.text!)!
             let b = Double(result.text!)!
             let c = a - b
@@ -187,6 +188,7 @@ class ViewController: UIViewController {
             }
             else
             {
+                add = 1
                 let x =
             Double(result.text!)!
                 result_1.text = String(x)
@@ -198,8 +200,10 @@ class ViewController: UIViewController {
     }
     @IBAction func multiply(_ sender: Any) {
         z = 0
+        
         if add == 1
         {
+            judge = 0
             let a = Double(result_1.text!)!
             let b = Double(result.text!)!
             let c = a * b
@@ -215,6 +219,7 @@ class ViewController: UIViewController {
             }
             else
             {
+                add = 1
                 let x =
                     Double(result.text!)!
                 result_1.text = String(x)
@@ -230,6 +235,7 @@ class ViewController: UIViewController {
         z = 0
         if add == 1
         {
+            judge = 0
             let a = Double(result_1.text!)!
             let b = Double(result.text!)!
             let c = a/b
@@ -245,6 +251,7 @@ class ViewController: UIViewController {
             }
             else
             {
+                add = 1
                 let x =
                     Double(result.text!)!
                 result_1.text = String(x)
