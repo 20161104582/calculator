@@ -135,6 +135,7 @@ class ViewController: UIViewController {
     @IBAction func dot(_ sender: Any) {
         if z==0
         {
+            result.text = result.text! + "0"
             result.text = result.text! + "."
             judge = 1
             z = z + 1
@@ -312,14 +313,18 @@ class ViewController: UIViewController {
         {
             D.removeLast()
         }
-        if result.text == "0" && number == 4
+        if c == 0 && number == 4
+        {
+            result.text = "错误"
+        }
+        /*if result.text == "0" && number == 4
         {
             result.text = "错误"
         }
         else
         {
             result.text = D
-        }
+        }*/
         
     }
     @IBAction func clear(_ sender: Any) {
@@ -340,10 +345,6 @@ class ViewController: UIViewController {
         result.text = String(count2)
         re = 0
     }
-    
-    
-    
-    
-    
+   
 }
 
