@@ -14,7 +14,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var result_1: UITextField!
     @IBOutlet weak var result_2: UITextField!
     @IBOutlet weak var result: UILabel!
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         result.text = ""
         // Do any additional setup after loading the view, typically from a nib.
@@ -26,7 +27,8 @@ class ViewController: UIViewController {
     var number = 0//判断加减乘除
     var divide = 0
     var z = 0//控制小数点变量
-    @IBAction func number0(_ sender: Any) {
+    @IBAction func number0(_ sender: Any)
+    {
         if re == 1
         {
             result.text = "0"
@@ -36,7 +38,8 @@ class ViewController: UIViewController {
             result.text = result.text! + "0"
         }
     }
-    @IBAction func number1(_ sender: Any) {
+    @IBAction func number1(_ sender: Any)
+    {
         if re == 1
         {
             result.text = "1"
@@ -46,7 +49,8 @@ class ViewController: UIViewController {
             result.text = result.text! + "1"
         }
     }
-    @IBAction func number2(_ sender: Any) {
+    @IBAction func number2(_ sender: Any)
+    {
         if re == 1
         {
             result.text = "2"
@@ -57,7 +61,8 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func number3(_ sender: Any) {
+    @IBAction func number3(_ sender: Any)
+    {
         if re == 1
         {
             result.text = "3"
@@ -67,7 +72,8 @@ class ViewController: UIViewController {
             result.text = result.text! + "3"
         }
     }
-    @IBAction func number4(_ sender: Any) {
+    @IBAction func number4(_ sender: Any)
+    {
         if re == 1
         {
             result.text = "4"
@@ -78,7 +84,8 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func number5(_ sender: Any) {
+    @IBAction func number5(_ sender: Any)
+    {
         if re == 1
         {
             result.text = "5"
@@ -89,7 +96,8 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func number6(_ sender: Any) {
+    @IBAction func number6(_ sender: Any)
+    {
         if re == 1
         {
             result.text = "6"
@@ -100,7 +108,8 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func number7(_ sender: Any) {
+    @IBAction func number7(_ sender: Any)
+    {
         if re == 1
         {
             result.text = "7"
@@ -111,7 +120,8 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func number8(_ sender: Any) {
+    @IBAction func number8(_ sender: Any)
+    {
         if re == 1
         {
             result.text = "8"
@@ -121,7 +131,8 @@ class ViewController: UIViewController {
             result.text = result.text! + "8"
         }
     }
-    @IBAction func number9(_ sender: Any) {
+    @IBAction func number9(_ sender: Any)
+    {
         if re == 1
         {
             result.text = "9"
@@ -132,16 +143,21 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func dot(_ sender: Any) {
+    @IBAction func dot(_ sender: Any)
+    {
         if z==0
         {
-            result.text = result.text! + "0"
+            if result.text == ""
+            {
+                result.text = result.text! + "0"
+            }
             result.text = result.text! + "."
             judge = 1
             z = z + 1
         }
     }
-    @IBAction func add(_ sender: Any) {
+    @IBAction func add(_ sender: Any)
+    {
         judge = 1
         z = 0
         if add == 1
@@ -156,7 +172,8 @@ class ViewController: UIViewController {
         }
         else
         {
-            if result.text == "" {
+            if result.text == ""
+            {
                 result.text = "0"
             }
             else
@@ -182,9 +199,11 @@ class ViewController: UIViewController {
             result.text = ""
             number = 1
             re = 1
-        }else
+        }
+        else
         {
-            if result.text == ""{
+            if result.text == ""
+            {
                 result.text = "0"
             }
             else
@@ -199,7 +218,8 @@ class ViewController: UIViewController {
             }
         }
     }
-    @IBAction func multiply(_ sender: Any) {
+    @IBAction func multiply(_ sender: Any)
+    {
         z = 0
         
         if add == 1
@@ -212,7 +232,8 @@ class ViewController: UIViewController {
             result.text = ""
             number = 3
             re = 1
-        }else
+        }
+        else
         {
             if result.text == ""
             {
@@ -232,7 +253,8 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func divide(_ sender: Any) {
+    @IBAction func divide(_ sender: Any)
+    {
         z = 0
         if add == 1
         {
@@ -247,7 +269,8 @@ class ViewController: UIViewController {
         }
         else
         {
-            if result.text == ""{
+            if result.text == ""
+            {
                 result.text = "0"
             }
             else
@@ -266,12 +289,13 @@ class ViewController: UIViewController {
     @IBAction func equal(_ sender: Any) {
         var d:Double
         var c:Double
-        
+
         let x = Double(result_1.text!)!
-        c = (result.text! as NSString).doubleValue
+        /*c = (result.text! as NSString).doubleValue*/
+        c = Double(result.text!)!
         if number == 1
         {
-            d = x - c
+            d = (x*100000 - c*100000)/100000
         }
         else if number == 2
         {
@@ -283,21 +307,20 @@ class ViewController: UIViewController {
         }
         else if number == 4
         {
-            d = x / (c)
+            d = (x*100000) / (c*100000)
         }
         else
         {
-            d = 1000
+            d = 10000
         }
         result_2.text = String(c)
         if judge == 1
         {
-            result.text =
-                String(format:"%f",d)
+            result.text = String(format:"%.0f",d)
         }
         else
         {
-            result.text = String(format: "%.0f",d)
+            result.text = String(format: "%.5f",d)
         }
         re = 1
         judge = 0
@@ -315,31 +338,30 @@ class ViewController: UIViewController {
         }
         if c == 0 && number == 4
         {
-            result.text = "错误"
-        }
-        /*if result.text == "0" && number == 4
-        {
-            result.text = "错误"
+            result.text = "Error"
         }
         else
         {
-            result.text = D
-        }*/
+         result.text = D
+        }
         
     }
-    @IBAction func clear(_ sender: Any) {
+    @IBAction func clear(_ sender: Any)
+    {
         result.text = ""
         re = 0
     }
     
-    @IBAction func change(_ sender: Any) {
+    @IBAction func change(_ sender: Any)
+    {
         let count = Double(result.text!)!
         let count2 = -count
         result.text = String(count2)
         re = 0
     }
     
-    @IBAction func percent(_ sender: Any) {
+    @IBAction func percent(_ sender: Any)
+    {
         let count = Double(result.text!)!
         let count2 = count * 0.01
         result.text = String(count2)
